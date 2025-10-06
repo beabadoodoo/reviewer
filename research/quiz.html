@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Research Definitions Flashcards</title>
+<style>
+  body{display:flex;justify-content:center;align-items:center;height:100vh;background:#111;color:#fff;font-family:Arial}
+  .card{width:400px;height:250px;perspective:1000px;cursor:pointer}
+  .inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+  .flipped .inner{transform:rotateY(180deg)}
+  .face{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;justify-content:center;align-items:center;padding:20px;text-align:center;border:1px solid #444;border-radius:10px}
+  .back{transform:rotateY(180deg)}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="inner">
+    <div class="face front" id="front">a design of inquiry from the humanities<br>the researcher studies the lives of individuals and asks one or more individuals to provide stories about their lives.<br>often retold or restoried by the researcher into a narrative chronology<br>Narrative researchers collect stories from individuals</div>
+    <div class="face back" id="back">NARRATIVE RESEARCH</div>
+  </div>
+</div>
+<script>
+let cards=[
+  {def:"a design of inquiry from the humanities",ans:"NARRATIVE RESEARCH"},
+  {def:"the researcher studies the lives of individuals and asks one or more individuals to provide stories about their lives.",ans:"NARRATIVE RESEARCH"},
+  {def:"often retold or restoried by the researcher into a narrative chronology",ans:"NARRATIVE RESEARCH"},
+  {def:"Narrative researchers collect stories from individuals",ans:"NARRATIVE RESEARCH"},
+
+  {def:"a design of inquiry coming from philosophy and psychology",ans:"PHENOMENOLOGICAL RESEARCH"},
+  {def:"the researcher describes the lived experiences of individuals about a phenomenon as described by participants.",ans:"PHENOMENOLOGICAL RESEARCH"},
+
+  {def:"a design of inquiry coming from anthropology and sociology",ans:"ETHNOGRAPHIC RESEARCH"},
+  {def:"the researcher studies the shared patterns of behaviors, language, and actions of an intact cultural group in a natural",ans:"ETHNOGRAPHIC RESEARCH"},
+  {def:"Data collection often involves observations and interviews.",ans:"ETHNOGRAPHIC RESEARCH"},
+  {def:"focuses on an entire culture-sharing group",ans:"ETHNOGRAPHIC RESEARCH"},
+
+  {def:"a design of inquiry found in many fields, especially evaluation,",ans:"CASE STUDY"},
+  {def:"the researcher develops an in-depth analysis of a case, often a program, event, activity, process, or one or more individuals.",ans:"CASE STUDY"},
+  {def:"Cases are bounded by time and activity",ans:"CASE STUDY"},
+
+  {def:"design of inquiry from sociology",ans:"GROUNDED THEORY"},
+  {def:"the researcher derives a general, abstract theory of a process, action, or interaction grounded in the views of participants.",ans:"GROUNDED THEORY"},
+  {def:"the intent of a grounded theory study is to move beyond description and to generate or discover a theory",ans:"GROUNDED THEORY"},
+  {def:"involves using multiple stages of data collection and the refinement and interrelationship of categories of information",ans:"GROUNDED THEORY"}
+];
+let index=0;const card=document.getElementById('card');const front=document.getElementById('front');const back=document.getElementById('back');
+function loadCard(){front.innerHTML=cards[index].def;back.innerHTML=cards[index].ans;card.classList.remove('flipped');}
+card.addEventListener('click',()=>{if(!card.classList.contains('flipped')){card.classList.add('flipped');}else{index=(index+1)%cards.length;loadCard();}});
+loadCard();
+</script>
+</body>
+</html>
